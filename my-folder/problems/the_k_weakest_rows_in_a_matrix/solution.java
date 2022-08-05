@@ -29,7 +29,6 @@ class Solution {
             }
         }
         
-        // Arrays.sort(finalAns);
         for(int i=0;i<rows;i++)
             finalAns[i] = i;
         
