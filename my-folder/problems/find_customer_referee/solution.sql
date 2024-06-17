@@ -1,2 +1,3 @@
 /* Write your T-SQL query statement below */
-select name from Customer where referee_id<>2 or referee_id is null;
+SELECT NAME FROM CUSTOMER
+WHERE REFEREE_ID <> 2 OR REFEREE_ID IS NULL;
