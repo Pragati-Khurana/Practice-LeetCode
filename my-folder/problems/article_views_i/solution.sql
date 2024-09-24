@@ -1,3 +1,4 @@
 /* Write your T-SQL query statement below */
-SELECT DISTINCT AUTHOR_ID AS ID FROM VIEWS
-WHERE AUTHOR_ID = VIEWER_ID
+select distinct author_id as id from views
+where author_id = viewer_id
+order by author_id;
