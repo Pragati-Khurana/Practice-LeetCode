@@ -1,3 +1,3 @@
 /* Write your T-SQL query statement below */
-SELECT NAME, POPULATION, AREA FROM WORLD
-WHERE AREA>=3000000 OR POPULATION>=25000000
+select name, population, area from World
+where area >= 3000000 or population >= 25000000;
