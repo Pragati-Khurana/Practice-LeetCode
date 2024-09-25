@@ -1,4 +1,4 @@
 /* Write your T-SQL query statement below */
-SELECT CUSTOMER_ID, COUNT(CUSTOMER_ID) AS COUNT_NO_TRANS FROM VISITS V
-WHERE VISIT_ID NOT IN (SELECT DISTINCT VISIT_ID FROM TRANSACTIONS)
-GROUP BY CUSTOMER_ID;
+select customer_id, count(visit_id) count_no_trans from Visits
+where visit_id not in (select distinct visit_id from Transactions)
+group by customer_id;
