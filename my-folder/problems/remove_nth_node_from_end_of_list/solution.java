@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                            /**
+/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -9,41 +9,31 @@
  * }
  */
 class Solution {
-    public ListNode reverse(ListNode prev, ListNode cur) {
-        ListNode temp=null;
-
-        while(cur!=null) {
-            temp = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = temp;
-        }
-        return prev;
-    }
-
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode prev = null;
-        ListNode cur = head;
-        
-        head = reverse(null, head);
+        int l=0;
+        ListNode temp = head;
 
-        if(n==1) {
-            head = head.next;
-            head = reverse(null, head);
-            return head;
+        while(temp != null) {
+            l++;
+            temp = temp.next;
         }
+        n = l-n+1;
 
-        int count=1;
-        prev = null;
-        cur = head;
-        while(count<n) {
+        ListNode cur = head;
+        ListNode prev = null;
+        int i = 1;
+        while(i < n) {
             prev = cur;
             cur = cur.next;
-            count++;
+            i++;
         }
-        prev.next = cur.next;
-
-        head = reverse(null, head);
+        
+        if(cur == head)
+            head = cur.next;
+        else if(cur.next == null)
+            prev.next = null;
+        else
+            prev.next = cur.next;
 
         return head;
     }
