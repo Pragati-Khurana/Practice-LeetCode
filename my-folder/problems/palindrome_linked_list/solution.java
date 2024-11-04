@@ -9,33 +9,43 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-        String ori = "";
-        String rev = "";
-        ListNode prev = null;
-        ListNode cur = head;
-        ListNode front;
-
-        while(cur != null) {
-            ori = ori + cur.val;
-            front = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = front;
-        }
-        head = prev;
-        ListNode temp = head;
-        int i=0;
-        while(temp != null) {
-            rev = rev + temp.val;
-            if(Integer.parseInt(String.valueOf(ori.charAt(i))) != temp.val)
-                return false;
-            i++;
-            temp = temp.next;
-        }
+    public ListNode Reverse(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
         
-        if(ori.equals(rev))
-            return true;
-        return false;
+        ListNode newHead = Reverse(head.next);
+
+        ListNode front = head.next;
+        front.next = head;
+        head.next = null;
+
+        return newHead;
+    }
+    public boolean isPalindrome(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast.next!=null && fast.next.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode newHead = Reverse(slow.next);
+        System.out.println(slow.next);
+
+        ListNode first = head;
+        ListNode second = newHead;
+
+        // System.out.println(head.val + " " + newHead.val);
+
+        while(second != null) {
+            if(first.val != second.val) {
+                Reverse(newHead);
+                return false;
+            }
+            first = first.next;
+            second = second.next;
+        }
+        Reverse(newHead);
+        return true;
     }
 }
